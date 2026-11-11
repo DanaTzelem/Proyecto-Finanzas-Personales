@@ -1,57 +1,45 @@
-FINANZAS PERSONALES
+# Finanzas personales
 
 ¿A dónde se va tu plata? Esta app te lo muestra. Registra cada gasto por categoría, medio de pago y fecha, y míralo en un panel interactivo con gráficos, filtros y metas mensuales. Construida con Oracle (modelo estrella) y Streamlit, convierte tus compras diarias en decisiones para organizar mejor tu dinero.
 
+## Funcionalidades
 
-FUNCIONALIDADES
+- **Resumen:** total gastado, promedio, gasto más alto y categoría líder, con comparación frente al mes anterior y progreso hacia una meta mensual.
+- **Gráficos:** gasto por categoría, por medio de pago, por mes y evolución diaria.
+- **Movimientos:** búsqueda por descripción, descarga en CSV, edición y eliminación de gastos.
+- **Registro de gastos:** si la fecha no existe en la base de datos, la app la crea automáticamente.
+- **Catálogos:** consulta y creación de categorías y medios de pago sin duplicados.
+- **Filtros dinámicos:** por año, mes, categoría y medio de pago.
 
-Resumen: total gastado, número de gastos, promedio, gasto más alto y categoría líder, con comparación frente al mes anterior y progreso hacia una meta mensual.
-Gráficos: gasto por categoría, por medio de pago, por mes y evolución diaria.
+## Modelo de datos
 
-Movimientos: búsqueda por descripción, descarga en CSV, edición y eliminación de gastos.
+Modelo estrella con una tabla de hechos (`HECHO_GASTO`) y tres dimensiones (`DIM_CATEGORIA`, `DIM_MEDIO_PAGO` y `DIM_FECHA_COMPRA`).
 
-Registro de gastos: si la fecha no existe en la base de datos, la app la crea automáticamente.
+<img width="801" height="392" alt="Modelo estrella" src="https://github.com/user-attachments/assets/0e3d5e04-008a-4932-acf0-a28c5aab9bad" />
 
-Catálogos: consulta y creación de categorías y medios de pago sin duplicados.
+## Contenido del repositorio
 
-Filtros dinámicos: por año, mes, categoría y medio de pago.
+| Archivo | Descripción |
+|---|---|
+| `FP.py` | Aplicación Streamlit |
+| `DDL_fp.sql` | Creación de las tablas |
+| `DML_fp.sql` | Datos de ejemplo (60 gastos) |
+| `Diseño de la base de datos (2).pdf` | Documento de diseño |
+| `Condiciones de negocio.pdf` | Reglas de negocio |
+| `Modelo estrella.jpeg` | Diagrama del modelo estrella |
 
+## App
 
-MODELO DE DATOS
-
-Modelo estrella con una tabla de hechos y tres dimensiones:
-
-<img width="801" height="392" alt="Modelo estrella" src="https://github.com/user-attachments/assets/ae3f7f9b-8c8d-4396-85a8-db07089ec7f4" />
-
-REGLAS PRINCIPALES
-
-Todo gasto pertenece a una categoría, un medio de pago y una fecha existentes; el valor debe ser mayor a 0; los nombres de categorías y medios de pago son únicos; cada fecha se registra una sola vez en la dimensión y puede asociarse a muchos gastos.
-
-
-TECNOLOGÍAS
-
-Python 
-Streamlit: interfaz web
-
-python-oracledb: conexión a Oracle
-
-pandas y Altair: manejo de datos y gráficos
-
-Oracle Database
+<img width="1365" height="630" alt="image" src="https://github.com/user-attachments/assets/4336f9c9-fc2b-48eb-af49-ec0f2bf4e8e2" />
+<img width="1350" height="638" alt="image" src="https://github.com/user-attachments/assets/5fe48f61-511d-4a95-982d-aee5f6c008f2" />
+<img width="1365" height="651" alt="image" src="https://github.com/user-attachments/assets/cf90e97f-2af7-4cd3-8d95-14ac16384dc5" />
+<img width="1365" height="632" alt="image" src="https://github.com/user-attachments/assets/8f931185-cd86-41f8-a724-43387537342f" />
+<img width="1364" height="636" alt="image" src="https://github.com/user-attachments/assets/14169cdb-8b94-427b-8b9d-809440da672a" />
+<img width="1365" height="635" alt="image" src="https://github.com/user-attachments/assets/2a4497bc-aadc-49be-9a69-3c97f3761fd2" />
 
 
-
-CONTENIDO DEL REPOSITORIO
-
-FP.py --> Aplicación Streamlit
-
-DDL_finanzas_personales.sql --> Creación de las tablas 
-
-DML_finanzas_personales.sql --> Datos de ejemplo
-
-
-
-
-AUTORAS
+## Autoras
 
 Dana Tzelem Cantillo Parra y Sofía Calle
+
+Proyecto académico de bases de datos, Universidad EAFIT.
