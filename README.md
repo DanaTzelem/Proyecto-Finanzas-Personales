@@ -45,9 +45,6 @@ Ejecuta los scripts en tu base de datos Oracle **en este orden** (en SQL Develop
  
 1. **`DDL_fp.sql`**: crea las tres dimensiones y, al final, la tabla de hechos. Este orden es obligatorio porque `HECHO_GASTO` tiene llaves foráneas hacia las dimensiones.
 2. **`DML_fp.sql`**: carga los datos de ejemplo (8 categorías, 4 medios de pago, 30 fechas y 60 gastos).
-**1. DDL: creación de las tablas**
- 
-**2. DML: inserción de datos**
  
 Para comprobar la carga, estas consultas deben devolver 8, 4, 30 y 60:
  
