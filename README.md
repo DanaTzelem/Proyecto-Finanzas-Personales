@@ -28,6 +28,36 @@ Modelo estrella con una tabla de hechos (`HECHO_GASTO`) y tres dimensiones (`DIM
 | `Condiciones de negocio.pdf` | Reglas de negocio |
 | `Modelo estrella.jpeg` | Diagrama del modelo estrella |
 
+### Librerías necesarias
+ 
+Requiere Python 3 y estas librerías:
+ 
+| Librería | Para qué se usa |
+|---|---|
+| `streamlit` | Interfaz web |
+| `oracledb` | Conexión a Oracle |
+| `pandas` | Manejo de datos |
+| `altair` | Gráficos |
+
+### Orden de los scripts SQL
+ 
+Ejecuta los scripts en tu base de datos Oracle **en este orden** (en SQL Developer, con *Run Script* o `F5`):
+ 
+1. **`DDL_fp.sql`**: crea las tres dimensiones y, al final, la tabla de hechos. Este orden es obligatorio porque `HECHO_GASTO` tiene llaves foráneas hacia las dimensiones.
+2. **`DML_fp.sql`**: carga los datos de ejemplo (8 categorías, 4 medios de pago, 30 fechas y 60 gastos).
+**1. DDL: creación de las tablas**
+ 
+**2. DML: inserción de datos**
+ 
+Para comprobar la carga, estas consultas deben devolver 8, 4, 30 y 60:
+ 
+```sql
+SELECT COUNT(*) FROM dim_categoria;
+SELECT COUNT(*) FROM dim_medio_pago;
+SELECT COUNT(*) FROM dim_fecha_compra;
+SELECT COUNT(*) FROM hecho_gasto;
+```
+
 ## App
 
 <img width="1365" height="630" alt="image" src="https://github.com/user-attachments/assets/4336f9c9-fc2b-48eb-af49-ec0f2bf4e8e2" />
